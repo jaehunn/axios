@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const categories = [
   {
@@ -44,7 +44,7 @@ const CategoriesBlock = styled.div`
   }
 `;
 
-const Cartegory = styled.div`
+const Category = styled.div`
   font-size: 1.125rem;
   cursor: pointer;
   white-space: pre;
@@ -56,19 +56,36 @@ const Cartegory = styled.div`
     color: #495057;
   }
 
+  ${(props) =>
+    props.active &&
+    css`
+      font-weight: 600;
+      border-bottom: 2px solid #22b8cf;
+      color: #22b8cf;
+      &:hover {
+        color: #3bc9db;
+      }
+    `}
+
   & + & {
     margin-left: 1rem;
   }
 `;
 
-const Cartegories = () => {
+const Categories = ({ onSelect, category }) => {
   return (
     <CategoriesBlock>
       {categories.map((c) => (
-        <Cartegory key={c.name}>{c.text}</Cartegory>
+        <Category
+          key={c.name}
+          active={category === c.name}
+          onClick={() => onSelect(c.name)}
+        >
+          {c.text}
+        </Category>
       ))}
     </CategoriesBlock>
   );
 };
 
-export default Cartegories;
+export default Categories;
