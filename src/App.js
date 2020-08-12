@@ -1,8 +1,14 @@
 import React from 'react';
 import NewsList from './NewsList';
+import Cartegories from './Categories';
 
 function App() {
-  return <NewsList />;
+  return (
+    <>
+      <Cartegories />
+      <NewsList />
+    </>
+  );
 }
 
 export default App;

@@ -30,10 +30,10 @@ const NewsItemBlock = styled.div`
       margin-top: 0.5rem;
       white-space: normal;
     }
+  }
 
-    & + & {
-      margin-top: 3rem;
-    }
+  & + & {
+    margin-top: 3rem;
   }
 `;
 
