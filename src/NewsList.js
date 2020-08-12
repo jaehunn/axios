@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
 import axios from 'axios';
@@ -16,13 +16,6 @@ const NewsListBlock = styled.div`
     padding-right: 1rem;
   }
 `;
-
-const sampleArticle = {
-  title: '제목',
-  description: 'https://google.com',
-  url: 'https://google.com',
-  urlToImage: 'https://via.placeholder.com/160',
-};
 
 const NewsList = () => {
   const [articles, setArticles] = useState(null);
