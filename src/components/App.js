@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from './react';
 import NewsList from './NewsList';
 import Cartegories from './Categories';
 
