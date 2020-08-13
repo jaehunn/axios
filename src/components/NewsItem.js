@@ -12,7 +12,7 @@ const NewsItem = ({ article: { title, desc, url, imgUrl } }) => {
   );
 
   const contents = (
-    <div class="contents">
+    <div className="contents">
       <h2>
         <a href={url} target="_blank" rel="noopener noreferrer">
           {title}
@@ -23,7 +23,7 @@ const NewsItem = ({ article: { title, desc, url, imgUrl } }) => {
   );
 
   return (
-    <div classname="NewsItem">
+    <div className="NewsItem">
       {thumbnail}
       {contents}
     </div>

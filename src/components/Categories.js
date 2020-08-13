@@ -1,15 +1,22 @@
 import React from 'react';
 
 import Category from './Category';
-import { categories } from '../data';
+import { categoryDatas } from '../data';
 
 import './Categories.css';
 
-const Categories = () => {
+const Categories = ({ category, handleClick }) => {
   return (
     <div className="Categories">
-      {categories.map((category) => (
-        <Category key={category.name}>{category.text}</Category>
+      {categoryDatas.map((categoryData) => (
+        <Category
+          key={categoryData.name}
+          name={categoryData.name}
+          active={category === categoryData.name}
+          handleClick={handleClick}
+        >
+          {categoryData.text}
+        </Category>
       ))}
     </div>
   );
