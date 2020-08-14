@@ -11,7 +11,7 @@ const sampleData = {
   imgUrl: 'https://via.placeholder.com/160',
 };
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
   const [articles, setArticles] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
 
@@ -20,11 +20,15 @@ const NewsList = () => {
       setLoading(true);
 
       try {
-        const { data } = await axios.get(
-          'https://newsapi.org/v2/top-headlines?country=kr&apiKey=021be107ec8e4910b929d7a25db26080',
+        const query = category === 'all' ? '' : `&category=${category}`;
+
+        const {
+          data: { articles },
+        } = await axios.get(
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=021be107ec8e4910b929d7a25db26080`,
         );
 
-        setArticles(data);
+        setArticles(articles);
       } catch (e) {
         console.log(e);
       }
@@ -33,16 +37,16 @@ const NewsList = () => {
     };
 
     loadData();
-  }, []);
+  }, [category]);
 
   if (loading) return <div className="NewsList">Loading...</div>;
   if (!articles) return null;
 
   return (
     <div className="NewsList">
-      <NewsItem article={sampleData} />
-      <NewsItem article={sampleData} />
-      <NewsItem article={sampleData} />
+      {articles.map((article) => (
+        <NewsItem key={article.url} article={article} />
+      ))}
     </div>
   );
 };

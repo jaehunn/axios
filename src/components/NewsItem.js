@@ -2,7 +2,9 @@ import React from 'react';
 
 import './NewsItem.css';
 
-const NewsItem = ({ article: { title, desc, url, imgUrl } }) => {
+const NewsItem = ({
+  article: { title, description: desc, url, urlToImage: imgUrl },
+}) => {
   const thumbnail = (
     <div className="thumbnail">
       <a href={url} target="_blank" rel="noopener noreferrer">
