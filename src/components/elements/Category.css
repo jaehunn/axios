@@ -1,14 +1,23 @@
 .Category {
-  font-size: 1.125rem;
-  cursor: pointer;
   white-space: pre;
-  text-decoration: none;
+  cursor: pointer;
   color: inherit;
   padding-bottom: 0.25rem;
 }
 
-.Category:hover {
-  color: #495057;
+.Category a {
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.Category a:visited {
+  color: #333;
+}
+
+.Category a:hover {
+  display: inline-block;
+  transform: scale(1.2);
 }
 
 .Category + .Category {

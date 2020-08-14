@@ -1,4 +1,6 @@
 .Categories {
+  list-style: none;
+
   display: flex;
   padding: 1rem;
   width: 768px;
