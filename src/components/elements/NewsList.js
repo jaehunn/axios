@@ -1,39 +1,28 @@
 import React from 'react';
-
-import NewsItem from './NewsItem';
-import './NewsList.css';
 import axios from 'axios';
 
+import NewsItem from './NewsItem';
+
+import { usePromise } from '../../utils';
+
+import './NewsList.css';
+
 const NewsList = ({ category }) => {
-  const [articles, setArticles] = React.useState(null);
-  const [loading, setLoading] = React.useState(null);
+  const [loading, response, error] = usePromise(() => {
+    const query = category === 'all' ? '' : `&category=${category}`;
 
-  React.useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
-
-      try {
-        const query = category === 'all' ? '' : `&category=${category}`;
-
-        const {
-          data: { articles },
-        } = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=021be107ec8e4910b929d7a25db26080`,
-        );
-
-        setArticles(articles);
-      } catch (e) {
-        console.log(e);
-      }
-
-      setLoading(false);
-    };
-
-    loadData();
+    return axios.get(
+      `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=021be107ec8e4910b929d7a25db26080`,
+    );
   }, [category]);
 
   if (loading) return <div className="NewsList">Loading...</div>;
-  if (!articles) return null;
+  if (!response) return null;
+  if (error) return <div className="NewsList">Error!</div>;
+
+  const {
+    data: { articles },
+  } = response;
 
   return (
     <div className="NewsList">
