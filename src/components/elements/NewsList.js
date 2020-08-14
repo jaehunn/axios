@@ -4,13 +4,6 @@ import NewsItem from './NewsItem';
 import './NewsList.css';
 import axios from 'axios';
 
-const sampleData = {
-  title: 'Title',
-  desc: 'Description',
-  url: 'https://google.com',
-  imgUrl: 'https://via.placeholder.com/160',
-};
-
 const NewsList = ({ category }) => {
   const [articles, setArticles] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
