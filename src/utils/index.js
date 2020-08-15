@@ -2,7 +2,7 @@ import React from 'react';
 
 export function usePromise(promiseCreator, deps = []) {
   const [loading, setLoading] = React.useState(false);
-  const [resolve, setResolve] = React.useState(null);
+  const [response, setResponse] = React.useState(null);
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
@@ -10,8 +10,8 @@ export function usePromise(promiseCreator, deps = []) {
       setLoading(true);
 
       try {
-        const resolved = await promiseCreator();
-        setResolve(resolved);
+        const response = await promiseCreator();
+        setResponse(response);
       } catch (e) {
         setError(e);
       }
@@ -24,5 +24,5 @@ export function usePromise(promiseCreator, deps = []) {
     // eslint-disable-next-line
   }, deps);
 
-  return [loading, resolve, error];
+  return [loading, response, error];
 }

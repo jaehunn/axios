@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './NewsItem.css';
+import alterImg from '../../images/alterImg.jpg';
 
 const NewsItem = ({
   article: { title, description: desc, url, urlToImage: imgUrl },
@@ -8,7 +9,7 @@ const NewsItem = ({
   const thumbnail = (
     <div className="thumbnail">
       <a href={url} target="_blank" rel="noopener noreferrer">
-        <img src={imgUrl} alt="thumbnail" />
+        <img src={imgUrl || alterImg} alt="thumbnail" />
       </a>
     </div>
   );
