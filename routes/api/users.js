@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
-
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const { check, validationResult } = require("express-validator/check"); // express-validator.github.io
 
 const User = require("../../models/User");
@@ -65,7 +66,28 @@ router.post(
       await user.save();
 
       // Return jsonwebtoken(WIP)
-      res.send("User registered");
+      // https://github.com/auth0/node-jsonwebtoken
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
+
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        {
+          expiresIn: 360000,
+        },
+        (err, token) => {
+          if (err) throw err;
+
+          res.json({ token });
+        }
+      );
+
+      // jwt.io
+      // "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY5NmQzODYwNDdjNzY2YTE1MzlkMDlkIn0sImlhdCI6MTYwMzcyMDA3MCwiZXhwIjoxNjA0MDgwMDcwfQ.MFVbqkYOnuPSz_XICvIt7cXeQ2BjPYgiTmUANFW_yD4"
     } catch (err) {
       console.error(err.message);
 
