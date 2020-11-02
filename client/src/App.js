@@ -28,12 +28,12 @@ const App = () => {
       <Router>
         <>
           <Navbar />
-          <Route exact path="/" component={Landing}></Route>
+          <Route exact path="/" component={Landing} />
           <section className="container">
             <Alert />
             <Switch>
-              <Route exact path="/register" component={Register}></Route>
-              <Route exact path="/login" component={Login}></Route>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
             </Switch>
           </section>
         </>
