@@ -9,6 +9,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alert from "./components/layouts/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
+import CreateProfile from "./profile-forms/CreateProfile";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 import setAuthToken from "./utils/setAuthToken";
@@ -38,6 +39,11 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               {/* Protect Component: Dashboard */}
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exeact
+                path="/create-profile"
+                component={CreateProfile}
+              />
             </Switch>
           </section>
         </>
