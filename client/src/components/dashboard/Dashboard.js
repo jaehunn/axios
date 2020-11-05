@@ -26,7 +26,7 @@ const Dashboard = ({
         <i className="fas fa-user" /> Welcome {user && user.name}
       </p>
       {/* Issue -> Add Clear profile action */}
-      {profile ? (
+      {profile !== null ? (
         <>
           <DashboardActions />
           <Experience experience={profile.experience} />
