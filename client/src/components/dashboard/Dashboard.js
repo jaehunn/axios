@@ -6,6 +6,7 @@ import Spinner from "../layouts/Spinner";
 import { getCurrentProfile } from "../../actions/profile";
 
 import DashboardActions from "./DashboardActions";
+import Experience from "./Experience";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -25,8 +26,11 @@ const Dashboard = ({
         <i className="fas fa-user" /> Welcome {user && user.name}
       </p>
       {/* Issue -> Add Clear profile action */}
-      {profile != null ? (
-        <DashboardActions />
+      {profile ? (
+        <>
+          <DashboardActions />
+          <Experience experience={profile.experience} />
+        </>
       ) : (
         <>
           <p>You have not yet setup a profile, please add some info</p>
