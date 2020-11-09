@@ -8,6 +8,7 @@ import Navbar from "./components/layouts/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alert from "./components/layouts/Alert";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
@@ -16,7 +17,7 @@ import AddEduaction from "./components/profile-forms/AddEduaction";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
-import PrivateRoute from "./components/routing/PrivateRoute";
+import Post from "./components/post/Post";
 
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
@@ -68,6 +69,7 @@ const App = () => {
                 component={AddEduaction}
               />
               <PrivateRoute exact path="/posts" component={Posts} />
+              <PrivateRoute exact path="/posts/:id" component={Post} />
             </Switch>
           </section>
         </>
